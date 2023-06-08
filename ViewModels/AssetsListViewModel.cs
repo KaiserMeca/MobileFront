@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using MobileFront.Models;
 using MobileFront.Services;
+using MobileFront.Views;
 
 namespace MobileFront.ViewModels
 {
@@ -28,7 +29,7 @@ namespace MobileFront.ViewModels
             try
             {
                 IsBusy = true;
-                var assetList = await _assetsServices.SeeList();
+                var assetList = await _assetsServices.GetAssetsAsync();
                 if (assetList != null)
                 {
                     foreach (var item in assetList)
@@ -50,19 +51,17 @@ namespace MobileFront.ViewModels
             }
         }
         [RelayCommand]
-        public async Task GotoDetailsAsync()
+        public async Task GotoDetailsAsync(Asset assetparameter)
         {
-            if (SelectedAsset == null)
+            if (assetparameter == null)
             {
                 return;
             }
             var data = new Dictionary<string, object>
             {
-                { "asset", SelectedAsset }
-
-
+                { "assetKey", assetparameter }
             };
-            await Shell.Current.GoToAsync("DetailsPageRoute", true, data);
+            await Shell.Current.GoToAsync(nameof(Details), true, data);
         }
 
     }

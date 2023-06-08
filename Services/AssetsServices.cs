@@ -6,7 +6,7 @@ namespace MobileFront.Services
 {
     class AssetsServices : IAssetsServices
     {
-        public async Task<List<Asset>> SeeList()
+        public async Task<List<Asset>> GetAssetsAsync()
         {
             var client = new HttpClient();
             string url = "http://10.0.2.2:44386/api/Assets";

@@ -5,6 +5,6 @@ namespace MobileFront.Services
 {
     public interface IAssetsServices
     {
-        Task<List<Asset>> SeeList();
+        Task<List<Asset>> GetAssetsAsync();
     }
 }

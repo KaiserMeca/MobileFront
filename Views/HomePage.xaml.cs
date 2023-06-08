@@ -5,7 +5,7 @@ namespace MobileFront.Views;
 
 public partial class HomePage : ContentPage
 {
-	public HomePage(IAssetsServices assetsServices)//AssetsListViewModel vm
+	public HomePage(IAssetsServices assetsServices)
     {
         InitializeComponent();
         BindingContext = new AssetsListViewModel(assetsServices);
