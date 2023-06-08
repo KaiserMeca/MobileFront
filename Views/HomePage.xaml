@@ -1,28 +1,39 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileFront.Views.HomePage"
              xmlns:vm="clr-namespace:MobileFront.ViewModels"
-             xmlns:model="clr-namespace:MobileFront.Models"
-             x:DataType="vm:AssetsListViewModel"
-             Title="{Binding Title}">
-    <ScrollView>
-        <StackLayout>
-            <ListView x:Name="assetsListView" ItemsSource="{Binding Assets}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame BackgroundColor="White" Margin="10" Padding="10">
-                            <StackLayout Orientation="Horizontal">
-                                <StackLayout>
-                                    <Label Text="{Binding Name}" FontSize="Large" />
-                                    <Label Text="{Binding Department}" FontSize="Small" />
+             xmlns:model="clr-namespace:MobileFront.Models" Title="{Binding Title}" BackgroundImageSource="Resource/Images/fondohann.png">
+    <NavigationPage.TitleView>
+        <Label Text="Home" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
+    </NavigationPage.TitleView>
+    <StackLayout Margin="35">
+        <RefreshView Command="{Binding GetAssetsCommand}" IsRefreshing="{Binding IsRefreshing}">
+            <Frame Padding="10">
+                <CollectionView ItemsSource="{Binding Assets}" SelectionMode="Single" SelectedItem="{Binding SelectedAsset}"
+                                SelectionChangedCommand="{Binding GotoDetailsCommand}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Span="1" Orientation="Vertical" VerticalItemSpacing="0" ></GridItemsLayout>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout >
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout Margin="5">
+                                        <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="Large"/>
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <Label Text="{Binding Department}" FontSize="Small" />
+                                        <Label Text="{Binding RemainingLifespan.RemainingDuration}" HorizontalOptions="EndAndExpand" FontSize="Medium" />
+                                    </StackLayout>
+
                                 </StackLayout>
-                                <Label Text="{Binding RemainingLifespan}" HorizontalOptions="EndAndExpand" FontSize="Medium" />
+                                <Line BackgroundColor="Black"></Line>
                             </StackLayout>
-                        </Frame>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
-    </ScrollView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Frame>
+        </RefreshView>
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"></ActivityIndicator>
+    </StackLayout>
 </ContentPage>

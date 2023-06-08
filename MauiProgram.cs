@@ -1,6 +1,8 @@
 ﻿using MobileFront.Services;
 using MobileFront.ViewModels;
 using MobileFront.Views;
+using Microsoft.Extensions.DependencyInjection;
+
 
 namespace MobileFront;
 
@@ -18,8 +20,7 @@ public static class MauiProgram
 			});
         builder.Services.AddSingleton<IAssetsServices, AssetsServices>();
         builder.Services.AddSingleton<AssetsListViewModel>();
-		builder.Services.AddTransient<HomePage>();
-
+		builder.Services.AddSingleton<HomePage>();
 
         return builder.Build();
 	}

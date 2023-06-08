@@ -1,12 +1,22 @@
+using MobileFront.Services;
 using MobileFront.ViewModels;
 
 namespace MobileFront.Views;
 
 public partial class HomePage : ContentPage
 {
-	public HomePage(AssetsListViewModel vm)
-	{
-		InitializeComponent();
-		BindingContext = vm;
-	}
+	public HomePage(IAssetsServices assetsServices)//AssetsListViewModel vm
+    {
+        InitializeComponent();
+        BindingContext = new AssetsListViewModel(assetsServices);
+    }
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (BindingContext is AssetsListViewModel viewModel)
+        {
+            viewModel.GetAssetsCommand.Execute(null);
+        }
+    }
 }

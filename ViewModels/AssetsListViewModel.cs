@@ -2,13 +2,12 @@
 using CommunityToolkit.Mvvm.Input;
 using MobileFront.Models;
 using MobileFront.Services;
-using System.Collections.ObjectModel;
 
 namespace MobileFront.ViewModels
 {
     public partial class AssetsListViewModel : BaseViewModel
     {
-        public ObservableCollection<Asset> Assets { get; } = new();
+        public List<Asset> Assets { get; } = new();
         [ObservableProperty]
         Asset selectedAsset;
         [ObservableProperty]
@@ -19,10 +18,6 @@ namespace MobileFront.ViewModels
         public AssetsListViewModel(IAssetsServices assetsServices)
         {
             _assetsServices = assetsServices;
-        }
-
-        public AssetsListViewModel()
-        {
         }
 
         [RelayCommand]
@@ -39,8 +34,8 @@ namespace MobileFront.ViewModels
                     foreach (var item in assetList)
                     {
                         Assets.Add(item);
-                        Title = "Assets list";
                     }
+                    Title = "Assets list";
                 }
             }
             catch (Exception ex)
@@ -55,22 +50,20 @@ namespace MobileFront.ViewModels
             }
         }
         [RelayCommand]
-        async Task goToDetailsAsync()
+        public async Task GotoDetailsAsync()
         {
-            if (selectedAsset == null)
+            if (SelectedAsset == null)
             {
                 return;
             }
             var data = new Dictionary<string, object>
             {
-                { "asset", selectedAsset }
+                { "asset", SelectedAsset }
 
 
             };
-            //await Shell.Current.GoToAsync(page, true, data);
+            await Shell.Current.GoToAsync("DetailsPageRoute", true, data);
         }
-
-        //Agregar el goToDetails
 
     }
 }

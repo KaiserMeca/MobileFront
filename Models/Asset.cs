@@ -6,7 +6,7 @@
 
         public string Name { get; set; }
 
-        public string Department { get; set; }
+        public int Department { get; set; }
 
         public string DepartmentMail { get; set; }
 
@@ -14,7 +14,7 @@
 
         public int Lifespan { get; set; }
 
-        private string State { get; set; }
+        public string? State { get; set; }
 
         public RemainingLifespan RemainingLifespan { get; set; }
     }
