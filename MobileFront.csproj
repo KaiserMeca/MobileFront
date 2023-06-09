@@ -51,9 +51,11 @@
 	<ItemGroup>
 	  <None Remove="Platforms\Android\Resources\xml\network_security_config.xml" />
 	  <None Remove="Resources\Images\fondohann.png" />
+	  <None Remove="Resources\Raw\DataOffLine.Json" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="AutoMapper" Version="12.0.1" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>

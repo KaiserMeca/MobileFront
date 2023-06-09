@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using MobileFront.Models;
+using MobileFront.Models.DTOs;
 
 namespace MobileFront.ViewModels
 {
@@ -7,7 +8,7 @@ namespace MobileFront.ViewModels
     public partial class DetailsViewModel : ObservableObject
     {
         [ObservableProperty]
-        Asset asset;
+        AssetDTO asset;
         public DetailsViewModel()
         {
         }

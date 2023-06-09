@@ -2,7 +2,7 @@
 using MobileFront.ViewModels;
 using MobileFront.Views;
 using Microsoft.Extensions.DependencyInjection;
-
+using AutoMapper;
 
 namespace MobileFront;
 
@@ -18,7 +18,17 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
+
+        // AutoMapper
+        var mappingConfig = new MapperConfiguration(mc =>
+        {
+            mc.AddProfile(new MappingProfile());
+        });
+        IMapper mapper = mappingConfig.CreateMapper();
+        builder.Services.AddSingleton(mapper);
+
         builder.Services.AddSingleton<IAssetsServices, AssetsServices>();
+        builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);
         builder.Services.AddSingleton<HomePage>();
         builder.Services.AddSingleton<AssetsListViewModel>();
         builder.Services.AddTransient<Details>();

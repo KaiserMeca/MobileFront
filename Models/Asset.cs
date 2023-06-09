@@ -1,4 +1,6 @@
-﻿namespace MobileFront.Models
+﻿using Newtonsoft.Json;
+
+namespace MobileFront.Models
 {
     public class Asset
     {

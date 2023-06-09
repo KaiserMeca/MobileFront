@@ -5,10 +5,10 @@ namespace MobileFront.Views;
 
 public partial class HomePage : ContentPage
 {
-	public HomePage(IAssetsServices assetsServices)
+	public HomePage(IAssetsServices assetsServices, IConnectivity connectivity)
     {
         InitializeComponent();
-        BindingContext = new AssetsListViewModel(assetsServices);
+        BindingContext = new AssetsListViewModel(assetsServices, connectivity);
     }
     protected override void OnAppearing()
     {

@@ -1,0 +1,56 @@
+﻿[
+  {
+    "Name": "Computer monitor",
+    "Department": "Store2",
+    "DepartmentMail": "mail1@department1.com",
+    "PurchaseDate": "2022-11-15T00:00:00Z",
+    "RemainingLifespan": {
+      "RemainingDuration": "4y 5m 0d"
+    }
+  },
+  {
+    "Name": "keyboard",
+    "Department": "Store1",
+    "DepartmentMail": "mail2@department2.com",
+    "PurchaseDate": "2023-05-23T00:00:00Z",
+    "RemainingLifespan": {
+      "RemainingDuration": "2y 11m 29d"
+    }
+  },
+  {
+    "Name": "Headphones",
+    "Department": "HQ",
+    "DepartmentMail": "mail3@department3.com",
+    "PurchaseDate": "2022-05-22T00:00:00Z",
+    "RemainingLifespan": {
+      "RemainingDuration": "Timed out"
+    }
+  },
+  {
+    "Name": "Mouse",
+    "Department": "MaintenanceStation",
+    "DepartmentMail": "mail4@department4.com",
+    "PurchaseDate": "2021-09-11T00:00:00Z",
+    "RemainingLifespan": {
+      "RemainingDuration": "3m 4d"
+    }
+  },
+  {
+    "Name": "Laptop",
+    "Department": "HQ",
+    "DepartmentMail": "mail5@department4.com",
+    "PurchaseDate": "2018-02-11T00:00:00Z",
+    "RemainingLifespan": {
+      "RemainingDuration": "Timed out"
+    }
+  },
+  {
+    "Name": "Printer",
+    "Department": "Store2",
+    "DepartmentMail": "mail6@department4.com",
+    "PurchaseDate": "2019-03-11T00:00:00Z",
+    "RemainingLifespan": {
+      "RemainingDuration": "Timed out"
+    }
+  }
+]

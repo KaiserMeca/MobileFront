@@ -2,42 +2,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileFront.Views.HomePage"
              xmlns:vm="clr-namespace:MobileFront.ViewModels"
-             xmlns:model="clr-namespace:MobileFront.Models" Title="{Binding Title}" BackgroundImageSource="Resource/Images/fondohann.png">
-    <NavigationPage.TitleView>
-        <Label Text="Home" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
-    </NavigationPage.TitleView>
-    <StackLayout Margin="35">
+             xmlns:model="clr-namespace:MobileFront.Models" 
+             Title="{Binding Title}" 
+             BackgroundImageSource="Resource/Images/fondohann.png">
+    <StackLayout Margin="15">
         <RefreshView Command="{Binding GetAssetsCommand}" IsRefreshing="{Binding IsRefreshing}">
-            <Frame Padding="10">
-                <CollectionView ItemsSource="{Binding Assets}" SelectionMode="None" SelectedItem="{Binding SelectedAsset}"
+            <CollectionView ItemsSource="{Binding Assets}" SelectionMode="None" SelectedItem="{Binding SelectedAsset}"
                                 SelectionChangedCommand="{Binding GotoDetailsCommand}">
-                    <CollectionView.ItemsLayout>
-                        <GridItemsLayout Span="1" Orientation="Vertical" VerticalItemSpacing="0" ></GridItemsLayout>
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame Margin="10" Padding="15">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AssetsListViewModel}}, Path=GotoDetailsCommand}"
-                                                          CommandParameter="{Binding .}"></TapGestureRecognizer>
-                                </Frame.GestureRecognizers>
-                                <StackLayout >
-                                    <StackLayout Orientation="Horizontal">
-                                        <StackLayout Margin="5">
-                                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="Large"/>
-                                        </StackLayout>
-                                        <StackLayout>
-                                            <Label Text="{Binding Department}" FontSize="Small" />
-                                            <Label Text="{Binding RemainingLifespan.RemainingDuration}" HorizontalOptions="EndAndExpand" FontSize="Medium" />
-                                        </StackLayout>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Span="1" Orientation="Vertical" VerticalItemSpacing="10" ></GridItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="5">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AssetsListViewModel}}, Path=GotoDetailsCommand}"
+                                                      CommandParameter="{Binding .}"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+                            <StackLayout >
+                                <VerticalStackLayout>
+                                    <StackLayout >
+                                        <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="Large" Margin="0,0,0,8"/>
+                                        <Line BackgroundColor="Black"></Line>
                                     </StackLayout>
-                                    <Line BackgroundColor="Black"></Line>
-                                </StackLayout>
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </Frame>
+                                    <Grid ColumnDefinitions="2*,*" Margin="5">
+                                        <Label Grid.Column="0" Text="{Binding Department}" FontAttributes="Bold" 
+                                               BackgroundColor="Transparent"  FontSize="Medium"/>
+                                        <Label Grid.Column="1" Text="{Binding RemainingLifespan.RemainingDuration}" FontAttributes="Bold"
+                                               BackgroundColor="Transparent" FontSize="Medium" HorizontalTextAlignment="End" 
+                                               HorizontalOptions="EndAndExpand"/>
+                                    </Grid>
+                                </VerticalStackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </RefreshView>
         <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"></ActivityIndicator>
     </StackLayout>
