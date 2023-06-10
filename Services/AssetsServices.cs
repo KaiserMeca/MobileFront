@@ -1,5 +1,6 @@
 ﻿using MobileFront.Models.DTOs;
 using MobileFront.Services.ApiServices;
+using MobileFront.ViewModels;
 using System.Text.Json;
 
 namespace MobileFront.Services
@@ -7,7 +8,7 @@ namespace MobileFront.Services
     /// <summary>
     /// Service class for asset operations
     /// </summary>
-    class AssetsServices : IAssetsServices
+    class AssetsServices : IAssetsServices 
     {
         private readonly IAssetApiClient _assetsServices;
 
@@ -28,6 +29,7 @@ namespace MobileFront.Services
         {
             try
             {
+                Title = "Assets list";
                 return await _assetsServices.GetAssetsAsync();
             }
             catch (Exception ex)

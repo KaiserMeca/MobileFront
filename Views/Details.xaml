@@ -8,22 +8,23 @@
              Title="Asset Details" BackgroundImageSource="Resource/Images/fondohann.png">
     <Frame Margin="25" VerticalOptions="StartAndExpand">
         <StackLayout Margin="20">
-            <Label Text="{Binding Asset.Name}" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,0,0,20" />
+            <Label Text="{Binding Asset.Name}" FontSize="25" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,0,0,20" 
+                   TextColor="Black"/>
 
-            <Label Text="Department" FontSize="Large" FontAttributes="Bold" />
-            <Label Text="{Binding Asset.Department}" FontSize="Medium" Margin="0,0,0,10" FontAttributes="Bold"/>
+            <Label Text="Department" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="{Binding Asset.Department}" FontSize="Small" Margin="0,0,0,10" FontAttributes="Bold" TextColor="Black"/>
 
-            <Label Text="Department Mail" FontSize="Large" FontAttributes="Bold" />
-            <Label Text="{Binding Asset.DepartmentMail}" FontSize="Medium" Margin="0,0,0,10" FontAttributes="Bold"/>
+            <Label Text="Department Mail" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="{Binding Asset.DepartmentMail}" FontSize="Small" Margin="0,0,0,10" FontAttributes="Bold" TextColor="Black"/>
 
-            <Label Text="Purchase Date" FontSize="Large" FontAttributes="Bold" />
-            <Label Text="{Binding Asset.PurchaseDate, StringFormat='{0:d}'}" FontSize="Medium" Margin="0,0,0,10" FontAttributes="Bold"/>
+            <Label Text="Purchase Date" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="{Binding Asset.PurchaseDate, StringFormat='{0:d}'}" FontSize="Small" Margin="0,0,0,10" FontAttributes="Bold" TextColor="Black"/>
 
-            <Label Text="Lifespan" FontSize="Large" FontAttributes="Bold" />
-            <Label Text="{Binding Asset.Lifespan, StringFormat='{0} year'}" FontSize="Medium" Margin="0,0,0,10" FontAttributes="Bold"/>
+            <Label Text="Lifespan" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="{Binding Asset.Lifespan, StringFormat='{0} year'}" FontSize="Small" Margin="0,0,0,10" FontAttributes="Bold" TextColor="Black"/>
 
-            <Label Text="Remaining Lifespan" FontSize="Large" FontAttributes="Bold" />
-            <Label Text="{Binding Asset.RemainingLifespan.RemainingDuration}" FontSize="Medium" Margin="0,0,0,10" FontAttributes="Bold"/>
+            <Label Text="Remaining Lifespan" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="{Binding Asset.RemainingLifespan.RemainingDuration}" FontSize="Small" Margin="0,0,0,10" FontAttributes="Bold" TextColor="Black"/>
         </StackLayout>
     </Frame>
 </ContentPage>
