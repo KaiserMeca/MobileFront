@@ -5,7 +5,7 @@
              xmlns:model="clr-namespace:MobileFront.Models" 
              Title="{Binding Title}" 
              BackgroundImageSource="Resource/Images/fondohann.png">
-    <StackLayout Margin="15">
+    <StackLayout Margin="20">
         <RefreshView Command="{Binding GetAssetsCommand}" IsRefreshing="{Binding IsRefreshing}">
             <CollectionView ItemsSource="{Binding Assets}" SelectionMode="None" SelectedItem="{Binding SelectedAsset}"
                                 SelectionChangedCommand="{Binding GotoDetailsCommand}">

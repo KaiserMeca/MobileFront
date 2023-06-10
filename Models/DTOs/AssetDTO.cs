@@ -10,6 +10,8 @@
 
         public DateTime PurchaseDate { get; set; }
 
+        public int Lifespan { get; set; }
+
         public RemainingLifespanDTO RemainingLifespan { get; set; }
     }
 }

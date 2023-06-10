@@ -5,25 +5,25 @@
              xmlns:model="clr-namespace:MobileFront.Models"
              x:Class="MobileFront.Views.Details"
              x:DataType="vm:DetailsViewModel"
-             Title="{Binding Asset.Name }" BackgroundImageSource="Resource/Images/fondohann.png">
-    <Frame Margin="20" Padding="20">
+             Title="Asset Details" BackgroundImageSource="Resource/Images/fondohann.png">
+    <Frame Margin="25" VerticalOptions="StartAndExpand">
         <StackLayout Margin="20">
-            <Label Text="Asset Details" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,0,0,20" />
+            <Label Text="{Binding Asset.Name}" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,0,0,20" />
 
-            <Label Text="Department" FontSize="16" FontAttributes="Bold" />
-            <Label Text="{Binding Asset.Department}" FontSize="16" Margin="0,0,0,10" />
+            <Label Text="Department" FontSize="Large" FontAttributes="Bold" />
+            <Label Text="{Binding Asset.Department}" FontSize="Medium" Margin="0,0,0,10" FontAttributes="Bold"/>
 
-            <Label Text="Department Mail" FontSize="16" FontAttributes="Bold" />
-            <Label Text="{Binding Asset.DepartmentMail}" FontSize="16" Margin="0,0,0,10" />
+            <Label Text="Department Mail" FontSize="Large" FontAttributes="Bold" />
+            <Label Text="{Binding Asset.DepartmentMail}" FontSize="Medium" Margin="0,0,0,10" FontAttributes="Bold"/>
 
-            <Label Text="Purchase Date" FontSize="16" FontAttributes="Bold" />
-            <Label Text="{Binding Asset.PurchaseDate}" FontSize="16" Margin="0,0,0,10" />
+            <Label Text="Purchase Date" FontSize="Large" FontAttributes="Bold" />
+            <Label Text="{Binding Asset.PurchaseDate, StringFormat='{0:d}'}" FontSize="Medium" Margin="0,0,0,10" FontAttributes="Bold"/>
 
-            <!--<Label Text="Lifespan" FontSize="16" FontAttributes="Bold" />
-            <Label Text="{Binding Asset.Lifespan, StringFormat='{0} year'}" FontSize="16" Margin="0,0,0,10"/>-->
+            <Label Text="Lifespan" FontSize="Large" FontAttributes="Bold" />
+            <Label Text="{Binding Asset.Lifespan, StringFormat='{0} year'}" FontSize="Medium" Margin="0,0,0,10" FontAttributes="Bold"/>
 
-            <Label Text="Remaining Lifespan" FontSize="16" FontAttributes="Bold" />
-            <Label Text="{Binding Asset.RemainingLifespan.RemainingDuration}" FontSize="16" Margin="0,0,0,10" />
+            <Label Text="Remaining Lifespan" FontSize="Large" FontAttributes="Bold" />
+            <Label Text="{Binding Asset.RemainingLifespan.RemainingDuration}" FontSize="Medium" Margin="0,0,0,10" FontAttributes="Bold"/>
         </StackLayout>
     </Frame>
 </ContentPage>

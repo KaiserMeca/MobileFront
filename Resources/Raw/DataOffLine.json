@@ -4,6 +4,7 @@
     "Department": "Store2",
     "DepartmentMail": "mail1@department1.com",
     "PurchaseDate": "2022-11-15T00:00:00Z",
+    "Lifespan": 5,
     "RemainingLifespan": {
       "RemainingDuration": "4y 5m 0d"
     }
@@ -13,6 +14,7 @@
     "Department": "Store1",
     "DepartmentMail": "mail2@department2.com",
     "PurchaseDate": "2023-05-23T00:00:00Z",
+    "Lifespan": 3,
     "RemainingLifespan": {
       "RemainingDuration": "2y 11m 29d"
     }
@@ -22,6 +24,7 @@
     "Department": "HQ",
     "DepartmentMail": "mail3@department3.com",
     "PurchaseDate": "2022-05-22T00:00:00Z",
+    "Lifespan": 1,
     "RemainingLifespan": {
       "RemainingDuration": "Timed out"
     }
@@ -31,6 +34,7 @@
     "Department": "MaintenanceStation",
     "DepartmentMail": "mail4@department4.com",
     "PurchaseDate": "2021-09-11T00:00:00Z",
+    "Lifespan": 2,
     "RemainingLifespan": {
       "RemainingDuration": "3m 4d"
     }
@@ -40,6 +44,7 @@
     "Department": "HQ",
     "DepartmentMail": "mail5@department4.com",
     "PurchaseDate": "2018-02-11T00:00:00Z",
+    "Lifespan": 5,
     "RemainingLifespan": {
       "RemainingDuration": "Timed out"
     }
@@ -49,6 +54,7 @@
     "Department": "Store2",
     "DepartmentMail": "mail6@department4.com",
     "PurchaseDate": "2019-03-11T00:00:00Z",
+    "Lifespan": 4,
     "RemainingLifespan": {
       "RemainingDuration": "Timed out"
     }

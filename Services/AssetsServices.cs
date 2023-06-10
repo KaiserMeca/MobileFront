@@ -2,6 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using MobileFront.Models;
 using MobileFront.Models.DTOs;
+using MobileFront.Services.ApiServices;
 using System.Net.Http.Json;
 using System.Text.Json;
 
@@ -9,46 +10,19 @@ namespace MobileFront.Services
 {
     class AssetsServices : IAssetsServices
     {
-        private readonly IMapper _mapper;
+        //private readonly IMapper _mapper;
+        private readonly IAssetApiClient _assetsServices;
 
-        public AssetsServices(IMapper mapper)
+        public AssetsServices(/*IMapper mapper*/IAssetApiClient assetsServices)
         {
-            _mapper = mapper;
+            _assetsServices = assetsServices;
+            //_mapper = mapper;
         }
         public async Task<List<AssetDTO>> GetAssetsAsync()
         {
             try
             {
-                var client = new HttpClient();
-                string url = "http://10.0.2.2:44386/api/Assets";
-                client.BaseAddress = new Uri(url);
-
-                var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(10));
-                var requestTask = client.GetAsync("", cancellationTokenSource.Token);
-                var timeoutTask = Task.Delay(TimeSpan.FromSeconds(10));
-
-                var completedTask = await Task.WhenAny(requestTask, timeoutTask);
-
-                if (completedTask == requestTask)
-                {
-                    HttpResponseMessage response = await requestTask;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var assets = await response.Content.ReadFromJsonAsync<List<Asset>>();
-
-                        if (assets != null)
-                        {
-                            List<AssetDTO> assetDTOs = assets.AsQueryable().ProjectTo<AssetDTO>(_mapper.ConfigurationProvider).ToList();
-                            return assetDTOs;
-                        }
-                    }
-                }
-                else
-                {
-                    // Aquí puedes manejar la situación cuando ha pasado más de 10 segundos sin respuesta
-                }
-
+                return await _assetsServices.GetAssetsAsync();
             }
             catch (Exception ex)
             {
