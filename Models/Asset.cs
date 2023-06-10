@@ -2,6 +2,9 @@
 
 namespace MobileFront.Models
 {
+    /// <summary>
+    /// Class representing an asset
+    /// </summary>
     public class Asset
     {
         public Guid? Id { get; set; }
@@ -18,6 +21,9 @@ namespace MobileFront.Models
 
         public string? State { get; set; }
 
+        /// <summary>
+        /// Gets or sets the remaining lifespan information of the asset
+        /// </summary>
         public RemainingLifespan RemainingLifespan { get; set; }
     }
 }

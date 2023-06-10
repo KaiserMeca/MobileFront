@@ -1,13 +1,21 @@
 using MobileFront.Models;
 using MobileFront.ViewModels;
 
-namespace MobileFront.Views;
-
-public partial class Details : ContentPage
+namespace MobileFront.Views
 {
-    public Details(DetailsViewModel vm)
+    /// <summary>
+    /// A details page that displays detailed information for an asset.
+    /// </summary>
+    public partial class Details : ContentPage
     {
-        InitializeComponent();
-        BindingContext = vm;
+        /// <summary>
+        /// Creates a new instance of the Details class
+        /// </summary>
+        /// <param name="vm">The ViewModel associated with the details page</param>
+        public Details(DetailsViewModel vm)
+        {
+            InitializeComponent();
+            BindingContext = vm;
+        }
     }
 }

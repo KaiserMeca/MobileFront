@@ -6,11 +6,18 @@ using System.Net.Http.Json;
 
 namespace MobileFront.Services.ApiServices
 {
+    /// <summary>
+    /// API client for accessing asset data
+    /// </summary>
     public class AssetApiClient : IAssetApiClient
     {
         private HttpClient client;
         private readonly IMapper _mapper;
 
+        /// <summary>
+        /// Initializs a new instance of the <see cref="AssetApiClient"/> class.
+        /// </summary>
+        /// <param name="mapper">The mapper instance</param>
         public AssetApiClient(IMapper mapper)
         {
             client = new HttpClient();
@@ -18,6 +25,10 @@ namespace MobileFront.Services.ApiServices
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Retrieves a list of assets async
+        /// </summary>
+        /// <returns>The list of asset DTOs</returns>
         public async Task<List<AssetDTO>> GetAssetsAsync()
         {
             try

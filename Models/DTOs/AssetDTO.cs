@@ -1,5 +1,8 @@
 ﻿namespace MobileFront.Models.DTOs
 {
+    /// <summary>
+    /// Data Transfer Object class for an asset
+    /// </summary>
     public class AssetDTO
     {
         public string Name { get; set; }

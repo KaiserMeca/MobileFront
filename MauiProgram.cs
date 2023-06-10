@@ -31,7 +31,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<IAssetApiClient, AssetApiClient>();
         builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);
         builder.Services.AddSingleton<HomePage>();
-        builder.Services.AddSingleton<AssetsListViewModel>();
+        builder.Services.AddSingleton<HomePageViewModel>();
         builder.Services.AddTransient<Details>();
         builder.Services.AddTransient<DetailsViewModel>();
 

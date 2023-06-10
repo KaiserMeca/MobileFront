@@ -7,30 +7,54 @@ using MobileFront.Views;
 
 namespace MobileFront.ViewModels
 {
-    public partial class AssetsListViewModel : BaseViewModel
+    /// <summary>
+    /// View model for the HomePage
+    /// </summary>
+    public partial class HomePageViewModel : BaseViewModel
     {
+        /// <summary>
+        /// Gets the list of assets.
+        /// </summary>
         public List<AssetDTO> Assets { get; } = new();
+
+        /// <summary>
+        /// Gets or sets the selected asset
+        /// </summary>
         [ObservableProperty]
         Asset selectedAsset;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the view is refreshing
+        /// </summary>
         [ObservableProperty]
         bool isRefreshing;
 
-        IAssetsServices _assetsServices;
-        IConnectivity _connectivity;
+        private IAssetsServices _assetsServices;
+        private IConnectivity _connectivity;
 
-        public AssetsListViewModel(IAssetsServices assetsServices, IConnectivity connectivity)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HomePageViewModel"/> class
+        /// </summary>
+        /// <param name="assetsServices">The assets services</param>
+        /// <param name="connectivity">The connectivity NetworkAccess service</param>
+        public HomePageViewModel(IAssetsServices assetsServices, IConnectivity connectivity)
         {
             _assetsServices = assetsServices;
             _connectivity = connectivity;
             Title = "Assets list";
         }
 
+        /// <summary>
+        /// Recovers the assets after verifying the connection
+        /// </summary>
         [RelayCommand]
         public async Task GetAssets()
         {
             if (IsBusy)
                 return;
+
             Assets.Clear();
+
             try
             {
                 IsBusy = true;
@@ -38,16 +62,12 @@ namespace MobileFront.ViewModels
                 var assetList = (_connectivity.NetworkAccess == NetworkAccess.Internet)
                     ? await _assetsServices.GetAssetsAsync()
                     : await _assetsServices.GetAssetOffLineAsync();
-                //var assetList = await _assetsServices.GetAssetsAsync();
 
                 if (assetList != null)
                 {
-                    //foreach (var item in assetList)
-                    //{
-                    //    Assets.Add(item);
-                    //}
                     Assets.AddRange(assetList);
                 }
+
                 if (!assetList.Any())
                 {
                     Title = "Empty list";
@@ -55,7 +75,6 @@ namespace MobileFront.ViewModels
             }
             catch (Exception ex)
             {
-
                 await Shell.Current.DisplayAlert("Error", ex.ToString(), "Ok");
             }
             finally
@@ -64,6 +83,11 @@ namespace MobileFront.ViewModels
                 IsRefreshing = false;
             }
         }
+
+        /// <summary>
+        /// Navigates to the details view of a selected asset carrying the asset's data
+        /// </summary>
+        /// <param name="assetparameter">The selected asset</param>
         [RelayCommand]
         public async Task GotoDetailsAsync(AssetDTO assetparameter)
         {
@@ -71,12 +95,13 @@ namespace MobileFront.ViewModels
             {
                 return;
             }
+
             var data = new Dictionary<string, object>
             {
                 { "assetKey", assetparameter }
             };
+
             await Shell.Current.GoToAsync(nameof(Details), true, data);
         }
-
     }
 }

@@ -1,22 +1,35 @@
 using MobileFront.Services;
 using MobileFront.ViewModels;
 
-namespace MobileFront.Views;
-
-public partial class HomePage : ContentPage
+namespace MobileFront.Views
 {
-	public HomePage(IAssetsServices assetsServices, IConnectivity connectivity)
+    /// <summary>
+    /// The home page that displays a list of assets.
+    /// </summary>
+    public partial class HomePage : ContentPage
     {
-        InitializeComponent();
-        BindingContext = new AssetsListViewModel(assetsServices, connectivity);
-    }
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-
-        if (BindingContext is AssetsListViewModel viewModel)
+        /// <summary>
+        /// Creates a new instance of the HomePage class
+        /// </summary>
+        /// <param name="assetsServices">Abstraction of services api consumption</param>
+        /// <param name="connectivity">The service for checking network connectivit</param>
+        public HomePage(IAssetsServices assetsServices, IConnectivity connectivity)
         {
-            viewModel.GetAssetsCommand.Execute(null);
+            InitializeComponent();
+            BindingContext = new HomePageViewModel(assetsServices, connectivity);
+        }
+
+        /// <summary>
+        /// Method that is executed when the page is appearing
+        /// </summary>
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (BindingContext is HomePageViewModel viewModel)
+            {
+                viewModel.GetAssetsCommand.Execute(null);
+            }
         }
     }
 }

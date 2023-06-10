@@ -1,23 +1,29 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using MobileFront.Models;
-using MobileFront.Models.DTOs;
+﻿using MobileFront.Models.DTOs;
 using MobileFront.Services.ApiServices;
-using System.Net.Http.Json;
 using System.Text.Json;
 
 namespace MobileFront.Services
 {
+    /// <summary>
+    /// Service class for asset operations
+    /// </summary>
     class AssetsServices : IAssetsServices
     {
-        //private readonly IMapper _mapper;
         private readonly IAssetApiClient _assetsServices;
 
-        public AssetsServices(/*IMapper mapper*/IAssetApiClient assetsServices)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AssetsServices"/> class
+        /// </summary>
+        /// <param name="assetsServices">The asset API client</param>
+        public AssetsServices(IAssetApiClient assetsServices)
         {
             _assetsServices = assetsServices;
-            //_mapper = mapper;
         }
+
+        /// <summary>
+        /// Retrieves a list of assets asyn
+        /// </summary>
+        /// <returns>The list of asset DTOs</returns>
         public async Task<List<AssetDTO>> GetAssetsAsync()
         {
             try
@@ -29,8 +35,12 @@ namespace MobileFront.Services
                 Console.WriteLine("Error: " + ex.Message);
                 return await GetAssetOffLineAsync();
             }
-            return null;
         }
+
+        /// <summary>
+        /// Retrieves a list of assets from offline storage async
+        /// </summary>
+        /// <returns>The list of asset DTOs</returns>
         public async Task<List<AssetDTO>> GetAssetOffLineAsync()
         {
             using var stream = await FileSystem.OpenAppPackageFileAsync("DataOffLine.json");
